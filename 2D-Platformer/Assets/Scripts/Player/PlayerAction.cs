@@ -24,8 +24,5 @@ public class PlayerAction : MonoBehaviour
     {
         if (context.started)
             jump.StartJump();
-
-        if (context.canceled)
-            jump.CancelJump();
     }
 }

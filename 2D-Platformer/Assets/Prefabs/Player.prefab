@@ -1,67 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3272685130703445813
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5705708710548981061}
-  - component: {fileID: 7038991304267682257}
-  - component: {fileID: 8052618803508107350}
-  m_Layer: 0
-  m_Name: Movement
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5705708710548981061
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3272685130703445813}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9203564979152432486}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7038991304267682257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3272685130703445813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ea6dfed28b7284419fbc8abd4426639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayCastOffset: {x: 0.18, y: 0, z: 0}
-  groundLength: 0.71
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!114 &8052618803508107350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3272685130703445813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f98eefc753b270641b45b24f3bec0861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4508889350171940819
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4508889350171940819}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.24, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -178,6 +116,11 @@ GameObject:
   m_Component:
   - component: {fileID: 9203564979152432486}
   - component: {fileID: 6471411256271941172}
+  - component: {fileID: 8817705463160251718}
+  - component: {fileID: 5854577074671404504}
+  - component: {fileID: 1260642836763393671}
+  - component: {fileID: 3848632011058005148}
+  - component: {fileID: 3912155030415395853}
   - component: {fileID: 7753376283754210619}
   - component: {fileID: 173386432983014524}
   m_Layer: 0
@@ -200,7 +143,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5705708710548981061}
   - {fileID: 1031118275304661257}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -214,6 +156,83 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91555f107431e3c4c8bbb7dc28ab535c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8817705463160251718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075575406774266859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea6dfed28b7284419fbc8abd4426639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayCastOffset: {x: 0.29, y: 0, z: 0}
+  groundLength: 0.71
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &5854577074671404504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075575406774266859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98eefc753b270641b45b24f3bec0861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 5
+  friction: 0
+  maxAirAccel: 3
+  maxAirDecel: 1
+  maxAirTunSpeed: 7
+--- !u!114 &1260642836763393671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075575406774266859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c27051ed016af42b22cc86a2b38327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteChild: {fileID: 4508889350171940819}
+--- !u!114 &3848632011058005148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075575406774266859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a2d2f89bc4b294da095e9004bebb0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 3
+  upwardMultiplier: 1
+  downwardMultiplier: 2
+  timeToJumpApex: 0.42
+  coyoteTime: 0.03
+  speedLimit: 10
+--- !u!114 &3912155030415395853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075575406774266859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e042de2565d6b0f4b9dc7e9d53905130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &7753376283754210619
@@ -248,7 +267,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008915514, y: -0.1373322}
+  m_Offset: {x: -0.0005609095, y: -0.1373322}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -259,7 +278,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.61814934, y: 1.0736904}
+  m_Size: {x: 0.57753617, y: 1.0736904}
   m_EdgeRadius: 0
 --- !u!50 &173386432983014524
 Rigidbody2D:
