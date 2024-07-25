@@ -9,7 +9,7 @@ public class PlayerAction : MonoBehaviour
     private PlayerMovement movement;
     private PlayerJump jump;
 
-    private void Start()
+    private void Awake()
     {
         movement = GetComponent<PlayerMovement>();
         jump = GetComponent<PlayerJump>();
@@ -17,7 +17,7 @@ public class PlayerAction : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        movement.SetDirection(context.ReadValue<float>());
+        movement.SetDirectionX(context.ReadValue<float>());
     }
 
     public void OnJump(InputAction.CallbackContext context)

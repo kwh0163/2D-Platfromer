@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,25 +13,34 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float coyoteTime;
     [SerializeField] private float jumpBuffer;
 
+    public bool IsJumping { get; private set; }
+    public float ApexTime { get { return timeToJumpApex; } }
+
+    private Vector2 velocity;
     private bool onGround;
     private bool desiredJump;
-    private bool isJumping;
     private float gravityMultiplier;
     private float defaultGravityScale;
     private float coyoteTimeCounter;
     private float jumpBufferCounter;
+    private float jumpApexCounter;
 
     private Rigidbody2D rigid;
     private PlayerGround ground;
-    private Vector2 velocity;
 
-    void Start()
+    public Action JumpAction;
+
+    void Awake()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+        ground = GetComponent<PlayerGround>();
+    }
+
+    private void Start()
     {
         defaultGravityScale = 1f;
         jumpBufferCounter = 0;
         coyoteTimeCounter = 0;
-        rigid = GetComponent<Rigidbody2D>();
-        ground = GetComponent<PlayerGround>();
     }
 
     void Update()
@@ -41,11 +51,12 @@ public class PlayerJump : MonoBehaviour
 
         CheckJumpBuffer();
 
-        if (!isJumping && !onGround)
+        if (!IsJumping && !onGround)
             coyoteTimeCounter += Time.deltaTime;
         else
             coyoteTimeCounter = 0;
     }
+
 
     private void FixedUpdate()
     {
@@ -72,12 +83,13 @@ public class PlayerJump : MonoBehaviour
             //더블 점프 나중에 추가
 
             velocity.y += GetJumpSpeed();
-            isJumping = true;
+            IsJumping = true;
         }
         if(jumpBuffer == 0)
         {
             desiredJump = false;
         }
+        JumpAction?.Invoke();
     }
     private void CheckJumpBuffer()
     {
@@ -124,7 +136,7 @@ public class PlayerJump : MonoBehaviour
         else
         {
             if (onGround)
-                isJumping = false;
+                IsJumping = false;
 
             gravityMultiplier = defaultGravityScale;
         }
@@ -141,5 +153,9 @@ public class PlayerJump : MonoBehaviour
     public void StartJump()
     {
         desiredJump = true;
+    }
+    public float GetVeloctyY()
+    {
+        return velocity.y;
     }
 }

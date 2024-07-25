@@ -17,24 +17,23 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rigid;
     private PlayerGround ground;
-    private PlayerRenderer renderer;
 
     private bool isKeyPressed;
 
+    private void Awake()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+        ground = GetComponent<PlayerGround>();
+    }
     private void Start()
     {
         direction = Vector2.zero;
-        rigid = GetComponent<Rigidbody2D>();
-        ground = GetComponent<PlayerGround>();
-        renderer = GetComponent<PlayerRenderer>();
     }
-
     private void Update()
     {
         if(direction.x != 0)
         {
             isKeyPressed = true;
-            renderer.FlipSprite(direction.x < 0);
         }
         else
         {
@@ -78,8 +77,12 @@ public class PlayerMovement : MonoBehaviour
         rigid.velocity = velocity;
     }
 
-    public void SetDirection(float _directionX)
+    public void SetDirectionX(float _directionX)
     {
         direction.x = _directionX;
+    }
+    public Vector2 GetDirection()
+    {
+        return direction;
     }
 }

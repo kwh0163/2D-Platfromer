@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRenderer : MonoBehaviour
+public class PlayerSprite : MonoBehaviour
 {
-    [SerializeField] private GameObject spriteChild;
-
     private SpriteRenderer sprite;
 
-    void Start()
+    void Awake()
     {
-        sprite = spriteChild.GetComponent<SpriteRenderer>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     public void FlipSprite(bool _isFliped)
     {
         sprite.flipX = _isFliped;
     }
-
 }
