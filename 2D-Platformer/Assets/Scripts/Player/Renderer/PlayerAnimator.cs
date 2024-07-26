@@ -32,4 +32,8 @@ public class PlayerAnimator : MonoBehaviour
     {
         animator.SetBool("IsRunning", _isRunning);
     }
+    public void SetIsSliding(bool _isSliding)
+    {
+        animator.SetBool("IsSliding", _isSliding);
+    }
 }

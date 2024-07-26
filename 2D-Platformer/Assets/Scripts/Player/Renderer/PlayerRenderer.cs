@@ -7,6 +7,7 @@ public class PlayerRenderer : MonoBehaviour
     private PlayerGround ground;
     private PlayerMovement movement;
     private PlayerJump jump;
+    private PlayerSlide slide;
 
     private PlayerSprite sprite;
     private PlayerAnimator animator;
@@ -21,6 +22,7 @@ public class PlayerRenderer : MonoBehaviour
         ground = GetComponentInParent<PlayerGround>();
         movement = GetComponentInParent<PlayerMovement>();
         jump = GetComponentInParent<PlayerJump>();
+        slide = GetComponentInParent<PlayerSlide>();
 
         sprite = GetComponent<PlayerSprite>();
         animator = GetComponent<PlayerAnimator>();
@@ -36,12 +38,15 @@ public class PlayerRenderer : MonoBehaviour
     private void Update()
     {
         RunEffect();
+        CheckSliding();
         CheckFalling();
         CheckLanding();
     }
 
     private void RunEffect()
     {
+        if (slide.IsSliding)
+            return;
         float directionX = movement.GetDirection().x;
         animator.SetIsRunning(directionX != 0);
         if (directionX != 0)
@@ -51,6 +56,11 @@ public class PlayerRenderer : MonoBehaviour
     }
     private void CheckFalling()
     {
+        if (playerGrounded)
+        {
+            animator.TriggerLanded();
+            return;
+        }
         isFalling = jump.GetVeloctyY() < 0;
         if (isFalling)
         {
@@ -84,7 +94,10 @@ public class PlayerRenderer : MonoBehaviour
             playerGrounded = false;
         }
     }
-    
+    private void CheckSliding()
+    {
+        animator.SetIsSliding(slide.IsSliding);
+    }
     private void JumpEffect()
     {
         animator.TriggerJump();

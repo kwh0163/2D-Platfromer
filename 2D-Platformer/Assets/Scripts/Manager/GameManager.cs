@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Animator animator;
 
-    // Update is called once per frame
-    void Update()
+    private bool isPaused;
+    private void Start()
     {
-        
+        isPaused = false;
+    }
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            float time = isPaused ? 1 : 0;
+            Time.timeScale = time;
+            animator.speed = time;
+            isPaused = !isPaused;
+        }
     }
 }

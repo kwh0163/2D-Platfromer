@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rigid;
     private PlayerGround ground;
+    private PlayerSlide slide;
 
     private bool isKeyPressed;
 
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         ground = GetComponent<PlayerGround>();
+        slide = GetComponent<PlayerSlide>();
     }
     private void Start()
     {
@@ -48,7 +50,14 @@ public class PlayerMovement : MonoBehaviour
         velocity = rigid.velocity;
 
         if (ground.OnGround)
+        {
+            if (slide.IsSliding)
+            {
+                SlideMove();
+                return;
+            }
             RunWithoutAccel();
+        }
         else
             RunWithAccel();
     }
@@ -67,6 +76,12 @@ public class PlayerMovement : MonoBehaviour
             maxSpeedChange = maxAirDecel * Time.deltaTime;
         
         velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
+        rigid.velocity = velocity;
+    }
+
+    private void SlideMove()
+    {
+        velocity.x = slide.GetSlideVelocityX();
         rigid.velocity = velocity;
     }
 
