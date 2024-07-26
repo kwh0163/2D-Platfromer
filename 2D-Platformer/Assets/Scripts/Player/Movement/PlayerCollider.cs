@@ -19,8 +19,8 @@ public class PlayerCollider : MonoBehaviour
 
     public void OnSlide()
     {
-        defaultCollider.enabled = false;
         slideCollider.enabled = true;
+        defaultCollider.enabled = false;
     }
 
     public void OnDefault()
