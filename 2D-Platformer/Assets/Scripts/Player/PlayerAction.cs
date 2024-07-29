@@ -9,12 +9,14 @@ public class PlayerAction : MonoBehaviour
     private PlayerMovement movement;
     private PlayerJump jump;
     private PlayerSlide slide;
+    private PlayerInteract interact;
 
     private void Awake()
     {
         movement = GetComponent<PlayerMovement>();
         jump = GetComponent<PlayerJump>();
         slide = GetComponent<PlayerSlide>();
+        interact = GetComponent<PlayerInteract>();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -40,6 +42,13 @@ public class PlayerAction : MonoBehaviour
         if (context.canceled)
         {
             //slide.CancelSlide();
+        }
+    }
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            interact.OnInteract();
         }
     }
 }

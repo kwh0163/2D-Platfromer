@@ -73,7 +73,6 @@ public class PlayerSlide : MonoBehaviour
             gradient = -(maxVelocityX / (slideTime + slideTimeOffset));
             playerCollider.OnSlide();
             IsSliding = true;
-            Debug.Log(rigid.velocity.x);
         }
     }
     public void CancelSlide()

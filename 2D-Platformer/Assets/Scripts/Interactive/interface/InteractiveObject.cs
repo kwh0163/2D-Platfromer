@@ -1,4 +1,0 @@
-interface InteractiveObject
-{
-    void Interact();
-}
