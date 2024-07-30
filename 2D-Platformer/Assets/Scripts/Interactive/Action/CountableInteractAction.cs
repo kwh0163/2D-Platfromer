@@ -5,17 +5,17 @@ using UnityEngine.Events;
 
 public abstract class CountableInteractAction : InteractAction
 {
-    [SerializeField] private int maxCount;
-    private int currentCount;
-    private void Start()
+    protected int maxCount;
+    protected int currentCount;
+    protected override void Start()
     {
+        base.Start();
         currentCount = 0;
     }
     public override bool CheckInteractable()
     {
         if (isInteractable)
         {
-            currentCount++;
             isInteractable = currentCount < maxCount;
             return true;
         }

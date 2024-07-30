@@ -16,7 +16,7 @@ public class PlayerInteract : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out Interact interact))
+        if (collision.TryGetComponent(out Interact interact))
         {
             RemoveInteract();
             AddInteract(interact);
@@ -26,8 +26,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (collision.TryGetComponent(out Interact interact))
         {
-            if (interact == currentInteract)
-                RemoveInteract();
+            RemoveInteract();
         }
     }
     private void AddInteract(Interact _interact)
@@ -37,12 +36,13 @@ public class PlayerInteract : MonoBehaviour
     }
     private void RemoveInteract()
     {
-        currentInteract?.CancelInteract();
         currentEvent.RemoveAllListeners();
     }
 
     public void OnInteract()
     {
-        currentEvent.Invoke();
+        currentEvent?.Invoke();
+        if(currentInteract != null && !currentInteract.IsInteractable)
+            RemoveInteract();
     }
 }

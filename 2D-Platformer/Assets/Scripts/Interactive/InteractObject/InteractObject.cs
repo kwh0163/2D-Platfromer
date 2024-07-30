@@ -5,24 +5,20 @@ using UnityEngine.Events;
 
 public class InteractObject : MonoBehaviour, Interact
 {
-    private InteractOutLine outLine;
     private InteractAction action;
+
+    public bool IsInteractable => action.CheckInteractable();
+
     private void Awake()
     {
-        outLine = GetComponent<InteractOutLine>();
         action = GetComponent<InteractAction>();
     }
-    public void CancelInteract()
-    {
-        outLine.OffOutLine();
-    }
 
-    public virtual UnityAction GetInteractAction()
+    public UnityAction GetInteractAction()
     {
         if (!action.CheckInteractable())
-            return null;
+            return (() => { });
 
-        outLine.OnOutLine();
         return action.Action;
     }
 }

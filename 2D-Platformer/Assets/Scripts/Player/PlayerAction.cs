@@ -6,18 +6,10 @@ using UnityEngine.InputSystem.Interactions;
 
 public class PlayerAction : MonoBehaviour
 {
-    private PlayerMovement movement;
-    private PlayerJump jump;
-    private PlayerSlide slide;
-    private PlayerInteract interact;
-
-    private void Awake()
-    {
-        movement = GetComponent<PlayerMovement>();
-        jump = GetComponent<PlayerJump>();
-        slide = GetComponent<PlayerSlide>();
-        interact = GetComponent<PlayerInteract>();
-    }
+    [SerializeField] private PlayerMovement movement;
+    [SerializeField] private PlayerJump jump;
+    [SerializeField] private PlayerSlide slide;
+    [SerializeField] private PlayerInteract interact;
 
     public void OnMove(InputAction.CallbackContext context)
     {
