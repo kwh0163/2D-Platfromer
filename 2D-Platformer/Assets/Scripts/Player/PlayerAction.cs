@@ -6,6 +6,17 @@ using UnityEngine.InputSystem.Interactions;
 
 public class PlayerAction : MonoBehaviour
 {
+    [SerializeField] private PlayerInput input;
+
+    public void ChangeWalk()
+    {
+        input.SwitchCurrentActionMap("Walk");
+    }
+    public void ChangeUI()
+    {
+        input.SwitchCurrentActionMap("UI");
+    }
+
     [SerializeField] private PlayerMovement movement;
     [SerializeField] private PlayerJump jump;
     [SerializeField] private PlayerSlide slide;

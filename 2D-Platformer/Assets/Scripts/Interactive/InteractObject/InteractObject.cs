@@ -14,10 +14,10 @@ public class InteractObject : MonoBehaviour, Interact
         action = GetComponent<InteractAction>();
     }
 
-    public UnityAction GetInteractAction()
+    public UnityAction<GameObject> GetInteractAction()
     {
         if (!action.CheckInteractable())
-            return (() => { });
+            return ((_gameObject) => { });
 
         return action.Action;
     }

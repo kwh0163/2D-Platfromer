@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class TextAction : InteractAction
 {
-    [SerializeField] private List<string> textList;
+    [SerializeField] private List<Dialogue> dialogueList;
     private int currentIndex;
-    public override void Action()
+    public override void Action(GameObject _gameObject)
     {
-        Debug.Log(GetCurrentText());
-        isInteractable = currentIndex < textList.Count;
+        _gameObject.GetComponent<PlayerInteract>().textBox.StartPrintText(GetCurrentText());
+        isInteractable = currentIndex < dialogueList.Count;
     }
 
     protected override void Start()
@@ -17,8 +17,8 @@ public class TextAction : InteractAction
         base.Start();
         currentIndex = 0;
     }
-    private string GetCurrentText()
+    private List<string> GetCurrentText()
     {
-        return textList[currentIndex++];
+        return dialogueList[currentIndex++].stringList;
     }
 }

@@ -5,13 +5,15 @@ using UnityEngine.Events;
 
 public class PlayerInteract : MonoBehaviour
 {
+    public PlayerTextBox textBox;
+
     private Interact currentInteract;
-    private UnityEvent currentEvent;
+    private UnityEvent<GameObject> currentEvent;
 
     private void Awake()
     {
         if(currentEvent == null)
-            currentEvent = new UnityEvent();
+            currentEvent = new UnityEvent<GameObject>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -41,7 +43,7 @@ public class PlayerInteract : MonoBehaviour
 
     public void OnInteract()
     {
-        currentEvent?.Invoke();
+        currentEvent?.Invoke(gameObject);
         if(currentInteract != null && !currentInteract.IsInteractable)
             RemoveInteract();
     }

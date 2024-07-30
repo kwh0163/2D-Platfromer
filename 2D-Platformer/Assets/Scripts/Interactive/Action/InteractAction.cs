@@ -13,5 +13,5 @@ public abstract class InteractAction : MonoBehaviour
     {
         return isInteractable;
     }
-    public abstract void Action();
+    public abstract void Action(GameObject _gameObject);
 }

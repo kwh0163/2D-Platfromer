@@ -1,7 +1,8 @@
+using UnityEngine;
 using UnityEngine.Events;
 
 interface Interact
 {
-    UnityAction GetInteractAction();
+    UnityAction<GameObject> GetInteractAction();
     bool IsInteractable { get; }
 }

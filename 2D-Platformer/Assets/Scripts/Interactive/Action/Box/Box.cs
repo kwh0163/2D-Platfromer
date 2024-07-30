@@ -14,7 +14,7 @@ public class Box : InteractAction
         isOn = false;
     }
 
-    public override void Action()
+    public override void Action(GameObject _gameObject)
     {
         if (isOn)
             sprite.color = Color.blue;
