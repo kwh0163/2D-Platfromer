@@ -4,6 +4,11 @@ using UnityEngine;
 
 public abstract class InteractAction : MonoBehaviour
 {
+    [SerializeField] private Vector3 guideOffset;
+    public Vector3 GetGuidePosition() {
+        return transform.position + guideOffset;
+    }
+
     protected bool isInteractable;
     protected virtual void Start()
     {

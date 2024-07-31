@@ -47,6 +47,9 @@ TagManager:
   - name: Texture
     uniqueID: 1155341881
     locked: 0
+  - name: Floor
+    uniqueID: 3205955105
+    locked: 0
   - name: Outline
     uniqueID: 2745168659
     locked: 0

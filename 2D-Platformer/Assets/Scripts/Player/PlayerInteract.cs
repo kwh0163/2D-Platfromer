@@ -7,36 +7,45 @@ public class PlayerInteract : MonoBehaviour
 {
     public PlayerTextBox textBox;
 
-    private Interact currentInteract;
+    private InteractGuide guide;
+
+    private InteractAction currentAction;
     private UnityEvent<GameObject> currentEvent;
 
     private void Awake()
     {
+        guide = GetComponent<InteractGuide>();
+
         if(currentEvent == null)
             currentEvent = new UnityEvent<GameObject>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Interact interact))
+        if (collision.TryGetComponent(out InteractAction action))
         {
-            RemoveInteract();
-            AddInteract(interact);
+            if (action.CheckInteractable())
+            {
+                RemoveInteractAction();
+                SetInteractAction(action);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Interact interact))
+        if (collision.TryGetComponent(out InteractAction action))
         {
-            RemoveInteract();
+            RemoveInteractAction();
+            guide.OffGuide();
         }
     }
-    private void AddInteract(Interact _interact)
+    private void SetInteractAction(InteractAction _action)
     {
-        currentInteract = _interact;
-        currentEvent.AddListener(_interact.GetInteractAction());
+        currentAction = _action;
+        currentEvent.AddListener(_action.Action);
+        guide.OnGuide(_action.GetGuidePosition());
     }
-    private void RemoveInteract()
+    private void RemoveInteractAction()
     {
         currentEvent.RemoveAllListeners();
     }
@@ -44,7 +53,10 @@ public class PlayerInteract : MonoBehaviour
     public void OnInteract()
     {
         currentEvent?.Invoke(gameObject);
-        if(currentInteract != null && !currentInteract.IsInteractable)
-            RemoveInteract();
+        if (currentAction != null && !currentAction.CheckInteractable())
+        {
+            RemoveInteractAction();
+            guide.OffGuide();
+        }
     }
 }
