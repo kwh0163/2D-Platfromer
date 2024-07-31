@@ -44,6 +44,12 @@ TagManager:
   - name: Object
     uniqueID: 1321500459
     locked: 0
+  - name: Texture
+    uniqueID: 1155341881
+    locked: 0
+  - name: Outline
+    uniqueID: 2745168659
+    locked: 0
   - name: Player
     uniqueID: 922247971
     locked: 0
