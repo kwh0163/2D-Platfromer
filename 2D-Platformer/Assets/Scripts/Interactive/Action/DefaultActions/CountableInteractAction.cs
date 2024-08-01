@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public abstract class CountableInteractAction : InteractAction
 {
+    [SerializeField] protected int itemGetIndex = -1;
     protected int maxCount;
     protected int currentCount;
     protected override void Start()

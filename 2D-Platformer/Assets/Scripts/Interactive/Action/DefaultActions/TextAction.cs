@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class TextAction : InteractAction
 {
-    [SerializeField] private List<Dialogue> dialogueList;
-    private int currentIndex;
+    [SerializeField] protected List<Dialogue> dialogueList;
+    [SerializeField] private int itemGiveIndex;
+    [SerializeField] private bool isDisposable;
+    protected int currentIndex;
     public override void Action(GameObject _gameObject)
     {
+        if (currentIndex == itemGiveIndex)
+            GiveItem(_gameObject);
         _gameObject.GetComponent<PlayerInteract>().textBox.StartPrintText(GetCurrentText());
         isInteractable = currentIndex < dialogueList.Count;
     }
@@ -19,6 +23,9 @@ public class TextAction : InteractAction
     }
     private List<string> GetCurrentText()
     {
-        return dialogueList[currentIndex++].stringList;
+        int returnIndex = currentIndex;
+        if (isDisposable)
+            currentIndex++;
+        return dialogueList[returnIndex].stringList;
     }
 }

@@ -16,7 +16,7 @@ public class InteractGuide : MonoBehaviour
     private void Update()
     {
         guideTransform.position = 
-            Camera.main.WorldToScreenPoint(targetPosition); ;
+            Camera.main.WorldToScreenPoint(targetPosition);
     }
 
     public void OnGuide(Vector3 _position)
